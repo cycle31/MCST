@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="C:\Program Files\jQuery Mobile\jquery-1.11.1.min.js"></script>
+    <script src="C:\Program Files\jQuery Mobile\jquery.mobile-1.4.3.js"></script>
+    <script src="C:\Program Files\jQuery Mobile\myclabs-jquery.confirm-8f51329\jquery.confirm.js"></script>
+    <link rel="stylesheet" href="C:\Program Files\jQuery Mobile\jquery.mobile-1.4.3.min.css">
+
+<style type="text/css">
+  html, body {
+    width: 100%;
+    height: 100%;
+    background-color:
+}
+   #track1 {
+    position: relative;
+    top: 50px;
+    left:15px;
+}  
+
+
+ 
+.foo {
+  border: solid yellow;
+}
+</style>
+
+<script>
+  $(document).ready(function() {
+    $("#move").hide();
+});
+
+  function leavePage(){
+   var r = confirm("are you sure you want to logout");
+   if (r==true) {
+     window.location="login.html";
+  } else {
+  return false;
+  }
+}
+ 
+ $(window).load(function(){
+  $(".button").click(function() {
+    if ($(this).hasClass('foo')) {
+    $(this).removeClass('foo');
+    } else {
+    $(this).addClass('foo');
+    }
+  });
+});
+
+  $(window).load(function() {
+   $(".button").click(function() {
+    if ($(".button").hasClass('foo')) {
+    $("#move").show();
+  } else {
+    $("#move").hide();
+  }
+});
+});  
+</script>
+
+  </head>
+  <body>
+    <div data-role="header">
+      <h1 id="title"><img src="http://www.ttx.com/Libraries/Main_Gallery/TTXLOGOr_4c_RSG.sflb.ashx" alt="TTX Logo" height="30px"width="85px"><italic><em>Mobile Shop Car Tracking</em></italic></h1>
+    <div data-role="navbar">
+      <div>
+       <ul>
+          <li><input data-icon="refresh" type="button" value="Refresh Page" onClick="window.location.reload()" data-inline="true"></li>
+          <li><button onclick="leavePage()">logout</button></li>
+          <li><label for="search-basic"></label>
+              <input type="search" name="search" id="search-basic" value="" /></li>
+       </ul>
+     </div>
+    </div>
+    </div>
+    <br><h1 align="center">Facilty Name</h1></br>
+    <button id="move"><strong>Move</strong></button>
+      <div class="wholetrack" data-role="controlgroup" data-type="horizontal" class="ui-cotent">
+          <button class="track" id="t1">Track</button>            
+                    <button class="button" id="t1-1">01</button>
+                    <button class="button" id="t1-2">02</button>
+                    <button class="button" id="t1-3">03</button>
+                    <button class="button" id="t1-4">44</button>
+                    <button class="button" id="t1-5">88</button>
+                    <button class="button" id="t1-6">100</button>   
+                    <button class="button" id="t1-7">90</button>
+                    <button class="button" id="t1-8">91</button>
+                    <button class="button" id="t1-9">25</button>    
+                    <button class="button" id="t1-10">27</button>
+                    <button class="button" id="t1-11">29</button>
+                    <button class="button" id="t1-12">51</button>        
+                    <button class="button" id="t1-13">58</button>
+                    <button class="button" id="t1-14">27</button>
+        </div>
+        <div class="wholetrack" data-role="controlgroup" data-type="horizontal">
+          <button class="track" id="t2">Track</button>            
+                    <button class="button" id="t2-1">78</button>
+                    <button class="button" id="t2-2">69</button>
+                    <button class="button" id="t2-3">43</button>
+                    <button class="button" id="t2-4">21</button>
+                    <button class="button" id="t2-5">12</button>
+                    <button class="button" id="t2-6">11</button>    
+                    <button class="button" id="t2-7">10</button>
+                    <button class="button" id="t2-8">04</button>
+                    <button class="button" id="t2-9">07</button>    
+                    <button class="button" id="t2-10">09</button>
+        </div>
+        <div class="wholetrack" data-role="controlgroup" data-type="horizontal">
+          <button class="track" id="t3">Track</button>            
+                    <button class="button" id="t3-1">15</button>
+                    <button class="button" id="t3-2">105</button>
+                    <button class="button" id="t3-3">201</button>
+                    <button class="button" id="t3-4">320</button>
+                    <button class="button" id="t3-5">351</button>
+                    <button class="button" id="t3-6">360</button>   
+                    <button class="button" id="t3-7">41</button>
+                    <button class="button" id="t3-8">24</button>
+                    <button class="button" id="t3-9">156</button>   
+                    <button class="button" id="t3-10">160</button>
+                    <button class="button" id="t3-11">501</button>
+                    <button class="button" id="t3-12">502</button>        
+                    <button class="button" id="t3-13">503</button>
+                    <button class="button" id="t3-14">700</button>
+                    <button class="button" id="t3-14">989</button>
+                    <button class="button" id="t3-14">567</button>
+                    <button class="button" id="t3-14">345</button>
+        </div> 
+  </body>
+</html>
+
