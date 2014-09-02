@@ -1,0 +1,286 @@
+<!doctypehtml>
+<html>
+<head>
+	<title>TTX</title>
+
+<!--META HTTP-EQUIV="refresh" CONTENT="15"-->
+<A HREF="javascript:history.go(0)"> </A>
+
+
+  <style>
+	html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #c7c7c7;
+}
+   
+    .track {
+	height:50px;
+	width:110px;
+	border-radius: 15%;
+    border-width: 10px;
+    border-style: solid;
+    font-size: 15px;
+    }
+    .button {
+	height:50px;
+	width:70px;
+	border-radius: 30%;
+    border-width: 10px;
+    border-style: solid;
+    font-size: 15px;
+    }
+
+    #yard {
+      height: 70px;
+    }
+
+    .space {
+      height: 30px;
+    }
+	</style>
+
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script>
+//declare global variables
+var thegame;
+thegame = new mygame;
+
+//create your object 
+function mygame(){
+  this.tracks = [];
+  this.yards = [];
+//an object method to say something
+  this.sayhello = function (){
+    console.log ('hello world');
+  };
+  this.addtrack = function (jsonTrack){ 
+    var newtrack = new track();
+    jQuery.extend(newtrack, jsonTrack);
+    this.tracks.push(newtrack);
+    newtrack.show();
+  };
+  this.addyard = function (jsonYard){
+    var newyard = new yard();
+    jQuery.extend(newyard, jsonYard);
+    this.yards.push(newyard);
+    newyard.showYardName();    
+  };
+  
+}
+
+function yard(){
+  this.showYardName = function () {
+    var yard = $("#yard");
+    yard.append('<h2>'+this.yardname+'</h2>').trigger('create');
+    console.log("y="+this.yardname);
+  };
+}
+
+function track(){
+  var trackid;
+  /*var trackname;
+  var initialleft;
+  var initialtop;
+  var yardid;
+  var yardname;*/
+  this.debug = function (){
+     console.log ('my id is: ' + this.trackid);
+  };
+  this.show = function () {
+    var track = $("#track");
+    track.append('<div><button class="button">'+this.trackname+'</button></div>').trigger('create');
+    //("<img id='"+this.cssid+"' src='"+this.imgsrc+"'/>");
+    this.element = $("#" + this.cssid);
+    //this.element.css({display: 'block', position:'absolute',left:this.initialleft,top:this.initialtop });
+    
+  };
+  this.move=function(dx,dy){
+    this.element.animate({ "left": "+=" +dx+ "px", "top": "+=" +dy+ "px" }, "slow" );
+  };
+
+}
+
+$(document).ready (function(){
+  
+  var server = new ajaxServiceLayer();
+  var tracksFromJSON = server.gettracks();
+  console.log(tracksFromJSON.yards);
+  for (i=0;i<tracksFromJSON.yards.tracks.length;i++){
+    
+    thegame.addtrack(tracksFromJSON.yards.tracks[i]);
+  };
+  thegame.addyard(tracksFromJSON.yards);
+});
+
+
+function ajaxServiceLayer(){
+  
+  this.gettracks = function(){
+    //name the return value
+    var retval;
+    /*
+    $.get("getballs.aspx")
+      .done(function(data){
+        retval = JSON.parse(data);
+      });
+    */
+    //fake the server for now
+    //http://www.w3schools.com/json/json_syntax.asp
+    retval = {
+    "yards": 
+        {
+            "yardid": "1",
+            "yardname": "Yard1",
+            "yardlocation": "location1",
+            "tracks": [
+                {
+                    "trackid": "1",
+                    "trackname": "j1",
+                    "units": [
+                        {
+                            "unitid": "1",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "2",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "3",
+                            "unitname": "u3"
+                        },
+                        {
+                            "unitid": "4",
+                            "unitname": "u4"
+                        },
+                        {
+                            "unitid": "5",
+                            "unitname": "u5"
+                        },
+                        {
+                            "unitid": "6",
+                            "unitname": "u6"
+                        }
+                    ]
+                },
+                {
+                    "trackid": "2",
+                    "trackname": "j2",
+                    "units": [
+                        {
+                            "unitid": "7",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "8",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "9",
+                            "unitname": "u3"
+                        },
+                        {
+                            "unitid": "10",
+                            "unitname": "u4"
+                        },
+                        {
+                            "unitid": "11",
+                            "unitname": "u5"
+                        }
+                    ]
+                },
+                {
+                    "trackid": "3",
+                    "trackname": "j3",
+                    "units": [
+                        {
+                            "unitid": "12",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "13",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "14",
+                            "unitname": "u3"
+                        },
+                        {
+                            "unitid": "15",
+                            "unitname": "u4"
+                        },
+                        {
+                            "unitid": "16",
+                            "unitname": "u5"
+                        },
+                        {
+                            "unitid": "17",
+                            "unitname": "u6"
+                        },
+                        {
+                            "unitid": "18",
+                            "unitname": "u7"
+                        },
+                        {
+                            "unitid": "19",
+                            "unitname": "u8"
+                        }
+                    ]
+                },
+                {
+                    "trackid": "4",
+                    "trackname": "j4",
+                    "units": [
+                        {
+                            "unitid": "20",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "21",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "22",
+                            "unitname": "u3"
+                        }
+                    ]
+                }
+            ]
+        }
+    
+};
+    console.log(retval);
+    return retval;
+  };
+  
+}
+</script>
+</head>
+
+
+<body bgcolor="#fcaf00">
+  
+<div id="header">
+  <div id="navbar">
+      <ul>
+          
+
+          <li><a href="load.html">home</a></li>
+          <li><a href="ttx.html">Login</a></li>
+          <li><a href="track.html">Map</a></li>
+           <li><a href="4th page.html">text</a></li>
+          
+      </ul>
+  </div>
+
+  <img src="Logo.png"alt="TTX Logo" height="100px"width="150px">
+  <form>
+             <input type="text" placeholder="Search..." required>
+            <input type="button" value="Search">
+</form>
+  <div id="yard" align="center"></div>
+	 <div id="track"> </div>
+
+</body>
+</html>

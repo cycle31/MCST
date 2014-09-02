@@ -1,0 +1,410 @@
+<!doctypehtml>
+<html>
+<head>
+  <title>TTX</title>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+
+  <style>
+   
+    .track {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .button {
+    height:50px;
+    width:70px;
+    border-radius: 30%;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    }
+
+  .trackbutton {
+    height:50px;
+    width:100px;
+    border-radius: 30%;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    }
+
+    .highlight {
+      border-color: red;
+    }
+
+    #move {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+  background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+  background-color:#f24537;
+  -webkit-border-top-left-radius:0px;
+  -moz-border-radius-topleft:0px;
+  border-top-left-radius:0px;
+  -webkit-border-top-right-radius:0px;
+  -moz-border-radius-topright:0px;
+  border-top-right-radius:0px;
+  -webkit-border-bottom-right-radius:0px;
+  -moz-border-radius-bottomright:0px;
+  border-bottom-right-radius:0px;
+  -webkit-border-bottom-left-radius:0px;
+  -moz-border-radius-bottomleft:0px;
+  border-bottom-left-radius:0px;
+  text-indent:0px;
+  display:inline-block;
+  color:#ffffff;
+  font-family:Arial Black;
+  font-size:19px;
+  font-weight:bold;
+  font-style:normal;
+  height:50px;
+  line-height:50px;
+  width:100px;
+  text-decoration:none;
+  text-align:center;
+  position: fixed;
+  right: 30px;
+ }
+
+    body {
+     margin: 0; 
+     background: #ffd65e; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #ffd65e 0%, #febf04 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ffd65e), color-stop(100%,#febf04)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover,  #ffd65e 0%,#febf04 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover,  #ffd65e 0%,#febf04 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover,  #ffd65e 0%,#febf04 100%); /* IE10+ */
+background: radial-gradient(ellipse at center,  #ffd65e 0%,#febf04 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd65e', endColorstr='#febf04',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+     }
+
+    #navbar ul { 
+    margin: 0; 
+    padding: 10px; 
+    border: 0;
+    list-style-type: none; 
+    text-align: center;
+    background: #b5bdc8; /* Old browsers */
+    background: -moz-linear-gradient(top,  #b5bdc8 0%, #828c95 0%, #28343b 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b5bdc8), color-stop(0%,#828c95), color-stop(100%,#28343b)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #b5bdc8 0%,#828c95 0%,#28343b 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #b5bdc8 0%,#828c95 0%,#28343b 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #b5bdc8 0%,#828c95 0%,#28343b 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #b5bdc8 0%,#828c95 0%,#28343b 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5bdc8', endColorstr='#28343b',GradientType=0 ); /* IE6-9 */
+    } 
+
+    #navbar ul li {  
+    display: inline-block;
+    background: transparent;
+    } 
+
+    #navbar ul li button {
+    display: inline-block;
+    padding: 10px;
+    background: transparent;
+    font-weight: bold;
+    color: #FFFFFF;
+    border:transparent;
+    }
+
+    #navbar ul li a:hover { 
+    color: #0EC6D7; 
+    background-color: #8B008B; 
+    }
+
+   #logo{
+   position: fixed;
+   top:15px;
+   left: 10px;
+   }
+
+</style>
+
+<script>
+$(document).ready(function() {
+    $("#move").hide();
+});
+
+
+$(window).load(function(){
+$(".button").click(function() {
+    if ($(this).hasClass('highlight')) {
+  $(this).removeClass('highlight');
+} else {
+  
+  $(this).addClass('highlight');
+  }
+   });
+
+});
+
+$(window).load(function() {
+   $(".button").click(function() {
+    if ($(".button").hasClass('highlight')) {
+    $("#move").show();
+  } else {
+    $("#move").hide();
+  }
+});
+});
+//declare global variables
+var thegame;
+thegame = new mygame;
+
+//create your object 
+function mygame(){
+  this.tracks = [];
+  this.yards = [];
+  this.unit = [];
+//an object method to say something
+  this.sayhello = function (){
+    console.log ('hello world');
+  };
+  this.addtrack = function (jsonTrack){ 
+    var newtrack = new track();
+    jQuery.extend(newtrack, jsonTrack);
+    this.tracks.push(newtrack);
+    newtrack.show();
+  };
+  this.addyard = function (jsonYard){
+    var newyard = new yard();
+    jQuery.extend(newyard, jsonYard);
+    this.yards.push(newyard);
+    newyard.showYardName();    
+  };
+  this.addunit = function (jsonUnit, trackid){
+    var newunit = new unit();
+    jQuery.extend(newunit, jsonUnit);
+    this.unit.push(newunit);
+    newunit.show(trackid);    
+  };
+  
+}
+
+function yard(){
+    /*var yardid;
+  var yardname;*/
+  this.showYardName = function () {
+    var yard = $("#yard");
+    yard.append('<h2 align="center">'+this.yardname+'</h2>').trigger('create');
+    console.log("y="+this.yardname);
+  };
+}
+
+function track()
+{  
+  function createTrack(jsonDataObject){
+    this.trackid = jsonDataObject.trackid;
+    for(i=0;i<jsonDataObject.units.length;i++){
+      this.units.push(jsonDataObject.units[i])
+    }
+  }
+  /*var trackname;*/
+  this.debug = function (){
+     console.log ('my id is: ' + this.trackid);
+  };
+  this.show = function () {
+    $('#yard').append('<div class="track" id="'+this.trackid+'""><button class="trackbutton">'+this.trackname+'</button></div>').trigger('create'); 
+  };
+}
+
+function unit(){
+  this.show = function (id) {
+    $('#'+id).append('<button class="button">'+this.unitname+'</button>').trigger('create'); 
+  };
+}
+$(document).ready (function(){
+  
+  var server = new ajaxServiceLayer();
+  var tracksFromJSON = server.gettracks();
+  console.log(tracksFromJSON.yards);
+  thegame.addyard(tracksFromJSON.yards);
+  for (t=0;t<tracksFromJSON.yards.tracks.length;t++)
+  {  
+    var currentTrack = tracksFromJSON.yards.tracks[t]
+    thegame.addtrack(currentTrack);
+    for (u=0;u<currentTrack.units.length;u++)
+    {
+      thegame.addunit(currentTrack.units[u],currentTrack.trackid);
+    }
+  };
+});
+
+
+function ajaxServiceLayer(){
+  
+  this.gettracks = function(){
+    
+    /*
+    $.get("getballs.aspx")
+      .done(function(data){
+        retval = JSON.parse(data);
+      });
+    */
+    //fake the server for now
+    //http://www.w3schools.com/json/json_syntax.asp
+    var retval = {
+    "yards": 
+        {
+            "yardid": "1",
+            "yardname": "Yard1",
+            "yardlocation": "location1",
+            "tracks": [
+                {
+                    "trackid": "1",
+                    "trackname": "j1",
+                    "units": [
+                        {
+                            "unitid": "1",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "2",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "3",
+                            "unitname": "u3"
+                        },
+                        {
+                            "unitid": "4",
+                            "unitname": "u4"
+                        },
+                        {
+                            "unitid": "5",
+                            "unitname": "u5"
+                        },
+                        {
+                            "unitid": "6",
+                            "unitname": "u6"
+                        }
+                    ]
+                },
+                {
+                    "trackid": "2",
+                    "trackname": "j2",
+                    "units": [
+                        {
+                            "unitid": "7",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "8",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "9",
+                            "unitname": "u3"
+                        },
+                        {
+                            "unitid": "10",
+                            "unitname": "u4"
+                        },
+                        {
+                            "unitid": "11",
+                            "unitname": "u5"
+                        }
+                    ]
+                },
+                {
+                    "trackid": "3",
+                    "trackname": "j3",
+                    "units": [
+                        {
+                            "unitid": "12",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "13",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "14",
+                            "unitname": "u3"
+                        },
+                        {
+                            "unitid": "15",
+                            "unitname": "u4"
+                        },
+                        {
+                            "unitid": "16",
+                            "unitname": "u5"
+                        },
+                        {
+                            "unitid": "17",
+                            "unitname": "u6"
+                        },
+                        {
+                            "unitid": "18",
+                            "unitname": "u7"
+                        },
+                        {
+                            "unitid": "19",
+                            "unitname": "u8"
+                        }
+                    ]
+                },
+                {
+                    "trackid": "4",
+                    "trackname": "j4",
+                    "units": [
+                        {
+                            "unitid": "20",
+                            "unitname": "u1"
+                        },
+                        {
+                            "unitid": "21",
+                            "unitname": "u2"
+                        },
+                        {
+                            "unitid": "22",
+                            "unitname": "u3"
+                        }
+                    ]
+                }
+            ]
+        }
+    
+};
+    console.log(retval);
+    return retval;
+  };
+  
+}
+</script>
+
+
+</head>
+
+
+<body>
+  
+<div id="header">
+  <div id="navbar">
+      <ul>
+         
+          <li><button type="button" value="Refresh Page" onClick="window.location.reload()">Refresh</button></li>
+          <li><form><input type="text" placeholder="Search..." required><input type="button" value="Search"></form></li>
+          <li><button onclick="leavePage()">logout</button></li>
+          
+      </ul>
+    <div></div>
+      <h1>
+        <img id="logo" src="http://www.ttx.com/Libraries/Main_Gallery/TTXLOGOr_4c_RSG.sflb.ashx" height="30px"width="85px">
+      </h1>
+  </div>
+</div>
+
+  
+<button id="move">Move</button>
+  <div id="yard"></div>
+<!--  <div id="track"></div>
+   <div id="unit"></div> -->
+    
+</body>
+</html>
