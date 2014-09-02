@@ -191,46 +191,46 @@ function yard(){
   var yardname;*/
   this.showYardName = function () {
     var yard = $("#yard");
-    yard.append('<h2 align="center">'+this.yardname+'</h2>').trigger('create');
-    console.log("y="+this.yardname);
+    yard.append('<h2 align="center">'+this.yard_name+'</h2>').trigger('create');
+    console.log("y="+this.yard_name);
   };
 }
 
 function track()
 {  
   function createTrack(jsonDataObject){
-    this.trackid = jsonDataObject.trackid;
+    this.track_id = jsonDataObject.track_id;
     for(i=0;i<jsonDataObject.units.length;i++){
       this.units.push(jsonDataObject.units[i])
     }
   }
   /*var trackname;*/
   this.debug = function (){
-     console.log ('my id is: ' + this.trackid);
+     console.log ('my id is: ' + this.track_id);
   };
   this.show = function () {
-    $('#yard').append('<div class="track" id="'+this.trackid+'""><button class="trackbutton">'+this.trackname+'</button></div>').trigger('create'); 
+    $('#yard').append('<div class="track" id="'+this.track_id+'""><button class="trackbutton">'+this.track_name+'</button></div>').trigger('create'); 
   };
 }
 
 function unit(){
   this.show = function (id) {
-    $('#'+id).append('<button class="button">'+this.unitname+'</button>').trigger('create'); 
+    $('#'+id).append('<button class="button">'+this.unit_name+'</button>').trigger('create'); 
   };
 }
 $(document).ready (function(){
   
   var server = new ajaxServiceLayer();
   var tracksFromJSON = server.gettracks();
-  console.log(tracksFromJSON.yards);
-  thegame.addyard(tracksFromJSON.yards);
-  for (t=0;t<tracksFromJSON.yards.tracks.length;t++)
+  console.log(tracksFromJSON);
+  thegame.addyard(tracksFromJSON);
+  for (t=0;t<tracksFromJSON.tracks.length;t++)
   {  
-    var currentTrack = tracksFromJSON.yards.tracks[t]
+    var currentTrack = tracksFromJSON.tracks[t]
     thegame.addtrack(currentTrack);
     for (u=0;u<currentTrack.units.length;u++)
     {
-      thegame.addunit(currentTrack.units[u],currentTrack.trackid);
+      thegame.addunit(currentTrack.units[u],currentTrack.track_id);
     }
   };
 });
@@ -243,136 +243,135 @@ function ajaxServiceLayer(){
     /*
     $.get("getballs.aspx")
       .done(function(data){
-        retval = JSON.parse(data);
+        yard = JSON.parse(data);
       });
     */
     //fake the server for now
     //http://www.w3schools.com/json/json_syntax.asp
-    var retval = {
-    "yards": 
-        {
-            "yardid": "1",
-            "yardname": "Yard1",
-            "yardlocation": "location1",
+    var yard = {
+    
+            "yard_id": "1",
+            "yard_name": "Yard1",
+            "yard_location": "location1",
             "tracks": [
                 {
-                    "trackid": "1",
-                    "trackname": "j1",
+                    "track_id": "1",
+                    "track_name": "j1",
                     "units": [
                         {
-                            "unitid": "1",
-                            "unitname": "u1"
+                            "unit_id": "1",
+                            "unit_name": "u1"
                         },
                         {
-                            "unitid": "2",
-                            "unitname": "u2"
+                            "unit_id": "2",
+                            "unit_name": "u2"
                         },
                         {
-                            "unitid": "3",
-                            "unitname": "u3"
+                            "unit_id": "3",
+                            "unit_name": "u3"
                         },
                         {
-                            "unitid": "4",
-                            "unitname": "u4"
+                            "unit_id": "4",
+                            "unit_name": "u4"
                         },
                         {
-                            "unitid": "5",
-                            "unitname": "u5"
+                            "unit_id": "5",
+                            "unit_name": "u5"
                         },
                         {
-                            "unitid": "6",
-                            "unitname": "u6"
+                            "unit_id": "6",
+                            "unit_name": "u6"
                         }
                     ]
                 },
                 {
-                    "trackid": "2",
-                    "trackname": "j2",
+                    "track_id": "2",
+                    "track_name": "j2",
                     "units": [
                         {
-                            "unitid": "7",
-                            "unitname": "u1"
+                            "unit_id": "7",
+                            "unit_name": "u1"
                         },
                         {
-                            "unitid": "8",
-                            "unitname": "u2"
+                            "unit_id": "8",
+                            "unit_name": "u2"
                         },
                         {
-                            "unitid": "9",
-                            "unitname": "u3"
+                            "unit_id": "9",
+                            "unit_name": "u3"
                         },
                         {
-                            "unitid": "10",
-                            "unitname": "u4"
+                            "unit_id": "10",
+                            "unit_name": "u4"
                         },
                         {
-                            "unitid": "11",
-                            "unitname": "u5"
+                            "unit_id": "11",
+                            "unit_name": "u5"
                         }
                     ]
                 },
                 {
-                    "trackid": "3",
-                    "trackname": "j3",
+                    "track_id": "3",
+                    "track_name": "j3",
                     "units": [
                         {
-                            "unitid": "12",
-                            "unitname": "u1"
+                            "unit_id": "12",
+                            "unit_name": "u1"
                         },
                         {
-                            "unitid": "13",
-                            "unitname": "u2"
+                            "unit_id": "13",
+                            "unit_name": "u2"
                         },
                         {
-                            "unitid": "14",
-                            "unitname": "u3"
+                            "unit_id": "14",
+                            "unit_name": "u3"
                         },
                         {
-                            "unitid": "15",
-                            "unitname": "u4"
+                            "unit_id": "15",
+                            "unit_name": "u4"
                         },
                         {
-                            "unitid": "16",
-                            "unitname": "u5"
+                            "unit_id": "16",
+                            "unit_name": "u5"
                         },
                         {
-                            "unitid": "17",
-                            "unitname": "u6"
+                            "unit_id": "17",
+                            "unit_name": "u6"
                         },
                         {
-                            "unitid": "18",
-                            "unitname": "u7"
+                            "unit_id": "18",
+                            "unit_name": "u7"
                         },
                         {
-                            "unitid": "19",
-                            "unitname": "u8"
+                            "unit_id": "19",
+                            "unit_name": "u8"
                         }
                     ]
                 },
                 {
-                    "trackid": "4",
-                    "trackname": "j4",
+                    "track_id": "4",
+                    "track_name": "j4",
                     "units": [
                         {
-                            "unitid": "20",
-                            "unitname": "u1"
+                            "unit_id": "20",
+                            "unit_name": "u1"
                         },
                         {
-                            "unitid": "21",
-                            "unitname": "u2"
+                            "unit_id": "21",
+                            "unit_name": "u2"
                         },
                         {
-                            "unitid": "22",
-                            "unitname": "u3"
+                            "unit_id": "22",
+                            "unit_name": "u3"
                         }
                     ]
                 }
             ]
-        }
+        
     
 };
-    console.log(retval);
-    return retval;
+    console.log(yard);
+    return yard;
   };
   
 }
@@ -403,8 +402,6 @@ function ajaxServiceLayer(){
   
 <button id="move">Move</button>
   <div id="yard"></div>
-<!--  <div id="track"></div>
-   <div id="unit"></div> -->
-    
+
 </body>
 </html>
