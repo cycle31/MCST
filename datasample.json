@@ -1,0 +1,31 @@
+{  
+  "id":"1",
+  "name":"foo",
+  "location":"bar",
+  "tracks":{  
+    "id":"j1",
+    "name":"t_one",
+    "length":"6",
+    "units":[  
+      {  
+        "id":"1",
+        "name":"u1"
+      },
+      {  
+        "id":"2",
+        "name":"u2"
+      },
+      {  
+        "id":"3",
+        "name":"u3",
+        "cars":{  
+          "id":"1",
+          "type":"flat",
+          "initials":"TTX",
+          "status":"ready",
+          "number":"11111"
+        }
+      }
+    ]
+  }
+}
