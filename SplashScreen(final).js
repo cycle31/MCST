@@ -51,9 +51,9 @@ $(".ui-accordion-header.ui-state-default ").css("background","gold") ;
 });
   });
   setTimeout(function() {
-  window.location.href = "login.html";
+  window.location.href = "login3.html";
 }, 6200);
 
   $( "progress" ).click(function() {
-  $( "progressbar.progressbar" ).delay( 800 );
+  $( "progressbar.progressbar" ).delay( 100 );
 });
