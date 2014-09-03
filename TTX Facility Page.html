@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+<head> <!--Information Concerning <script> , is placed between the header tag because it runs the info as soon as the page loads --> 
+    <meta charset="UTF-8">
+    <title>Scavenger Hunt</title>
+    
+    <link rel="stylesheet" href="css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" /> 
+    <style>  
+           .all {
+        padding-top: 40px, 40px; 
+        margin-right: auto;
+        margin-left:  auto;
+        text-align: center;
+        background-color: yellow;
+    }           
+           
+    </style>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><!--  jquery libary --> 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"><!-- bootstrap library Css--> 
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> <!-- bootstrap library Javascript --> 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="all">
+          <h2>Facility 18</h2>
+    <div class="stage">
+        <div class="logo">
+            <img src="http://www.icstars.org/sites/all/themes/icstars_twentyeleven/images/logo.png"/>
+        </div> <!-- This Block is Necessary for question series --> 
+        <div class="question"> 
+            <p>This is what will be asked eventually.</p>
+        <!-- This is the form information, input type= text && submit -->
+            <input type="text">
+            <button>Submit</button>
+        </div> <!-- This Block is Necessary for question series -->
+    </div>
+    </div>
+    <div class="tracks">
+    <button>Track 1</button><table><tr></tr></tr></table>
+    <button> Track 2</button><table></table>
+    <button> Track 3</button><table></table>
+    <button> Track 4</button><table></table>
+    <button> Track 5</button><table></table>
+    <button> Track 6</button><table></table>
+    <button> Track 7</button><table></table>
+    <button> Track 8</button><table></table>
+    <button> Track 9</button><table></table>
+    <button> Track 10</button><table></table>
+    <button> Track 11</button><table></table>
+    <button> Track 12</button><table></table>
+    <button> Track 13</button><table></table>
+    <button> Track 14</button><table></table>
+    <button> Track 15</button><table></table>
+    
+    </div>
+    <script src="">
+    //Select file that you're focused on 
+    $(document).ready //Waits for the page to fully load before starting
+    //Input information into 'input type=submit' 
+     $("button").onclick(function(){
+          var answer= $("input[type='text']").contents();
+          alert(answer);
+          var answer= $("input
+       });
+    ) 
+    </script>
+</body>
+</html>
