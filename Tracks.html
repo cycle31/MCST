@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <meta charset="UTF-8">
+    <title></title>
+    
+<script> 
+    
+    var car = function (id,name,type,status,length,unit_id,tdata){
+        
+    this.id =id;
+    this.name= name;
+    this.type= type;
+    this.status=status;
+    this.unit_id = unit_id;
+    this.length =length;
+}
+    car.prototype.getID = function(){
+        return this.id; 
+        return this.name;
+        return this.type;
+        return this.status;
+        return this.unit_id;
+        return this.length;
+    }
+    
+    car.prototype.getStatus =function(){
+        return this.status; 
+        return this.unit_id;
+    }
+
+my_car_prototype = 
+{getID: function(){             console.log(this.id,this.name,this.type,this.status,this.unit_id,this.length); } };
+
+    
+    var data = Object.create(my_car_prototype);
+    console.log(data.__proto__ === my_car_prototype);
+    console.log(typeof data.getID);
+                
+    data.__proto__.data = car;
+    data.__proto__.getID =car.getID;
+    car.__proto__.getStatus = car.getStatus; 
+
+    
+var carCreate = function(data){
+var numOfCars = data.length;
+for(var carNum=0; carNum<numOfCars; carNum++) {
+    var car = new car(data[carNum].id, data[carNum].name, data[carNum].type, data[carNum].status,data[carNum].unit_id,data[carNum].length)[i];
+}
+    
+};
+    
+//seansCar = new car(789, 'Chevy', 'American', 'New', 25);//
+    
+//seansCar.name;//
+</script>
+
+<script>
+  var track = function (track_id,track_name,track_lentgh,units)
+{                      
+    this.track_id = track_id;
+    this.track_name= track_name;
+    this.track_length =track_lentgh;
+    this.track_units= units;
+}   
+  var trackCreate = function(tdata){
+    this.track_id = tdata.track_id;
+    for(numOfTracks=0; numOfTracks<tdata.units.length;numOfTracks++){
+      this.units.push(tdata.units[numOfTracks])
+    }          
+      
+  }
+   var track_id = function (tdata){
+        unit_id = track_id;
+        value: true; 
+  }
+  
+  var units = function(car){
+      console.log(this.track_id,this.status,this.lentgh);
+      this.status = status;
+      this.lentgh = lentgh;
+      this.track_id =track_id;
+      
+var status = function(data){
+            
+}
+    track.prototype.getID = function(){
+        return this.track_id; 
+        return this.track_name;
+        return this.track_lentgh;
+        return this.units;
+    }
+    
+    track.prototype.getStatus =function(){
+        return this.track_lentgh; 
+        return this.units;
+        
+    }
+
+my_track_prototype = 
+{getID: function(){
+console.log(this.track_id,this.track_name,this.length); } };
+    
+  };
+</script> 
+        
+        
+<script>
+        
+    var tdata = [
+    
+    {
+				"track_id": "p11",
+				"track_name": "t_one",
+				"track_length": "6",
+    }
+,
+    {
+                "track_id": "j4",
+                "track_name": "s_ulow",
+                "track_lentgh": "11",
+    }
+,
+    {
+                "track_id":"p11",
+                "track_name":"do_gma",
+                "track_lentgh":"7",
+    }
+,
+    {          
+                "track_id":"u2",
+                "track_name":"pigtl",
+                "track_lentgh":"6",
+    }
+                ];
+    
+    </script>
+
+<script>
+    
+
+var data = [
+
+ {
+    "id":      "D7YSH76", 
+    "number":  896737, 
+    "type":    "Rail",
+    "lentgh":  5,
+    "status":  "repair",
+    "track_id":  "j1",
+    }
+,
+    {
+    "id":      "S7YIU9", 
+    "number":  708300, 
+    "type":    "Box",
+    "lentgh":  3,
+    "status":  "ready",
+    "track_id":  "j1",
+        
+    }
+,
+ {
+    "id":      "DOG708", 
+    "number":"JP", 
+    "type":    "Box",
+    "lentgh":  3,
+    "status":  "ready",
+    "track_id":  "u2",
+    }
+,
+ {
+    "id":      "H1P0k", 
+    "number":  470284, 
+    "type":    "rail",
+    "lentgh":  4,
+    "status":  "repair",
+    "track_id":  "Y0S1KO",
+    }
+    
+,
+    {
+    "id":    "JS09P",
+    "number":  738923,
+    "type":    "gondala",
+    "lentgh":    5,
+    "status":  "out",
+    "track_id":  "u2",
+    }
+,
+    {
+     "id":"1",
+     "type": "flat",
+     "intitial":"TTX", 
+     "status": "ready",
+     "number": "11111",
+}
+    
+   //  var getobj = JSON.parse(tdata);
+  //   document.write(getobj.id + ", " + getobj.type);
+
+   
+
+];
+    
+</script>
+
+</head>
+
+<body>
+</body>
+
+</html>
