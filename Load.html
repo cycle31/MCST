@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="jquery_1.6.1.js"></script>
+<script type="text/javascript" src="jquery-ui-1.8.14.js"></script>
+<script type="text/javascript" language="javascript" src=" http://ui.jquery.com/repository/latest/ui/ui.core.js"></script> 
+<script type="text/javascript" language="javascript" src=" http://ui.jquery.com/repository/latest/ui/ui.draggable.js"></script> 
+<script type="text/javascript" language="javascript" src=" http://ui.jquery.com/repository/latest/ui/ui.resizable.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+ .ui-progressbar {
+    position: relative;
+  }
+  .progress-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+  }
+  </style>
+  <script>
+  $(function() {
+    var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        progressLabel.text( "Complete!" );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + 2 );
+ 
+      if ( val < 99 ) {
+        setTimeout( progress, 80 );
+      }
+    }
+ 
+    setTimeout( progress, 2000 );
+$('#progressbar').css({background: '#FF0000'});
+     $(function() {
+    $( "#accordion" ).accordion();
+    $(".ui-accordion-header").css("background","#FFF5EE") ;
+    $("#accordion li").draggable({
+      appendTo: "body",
+      helper: "clone"
+    
+    });
+    $("#accordian li").droppable({activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+        $( this ).find( ".placeholder" ).remove();
+        $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+      }
+    }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+        $( this ).removeClass( "ui-state-default" );
+      }
+    });
+
+$(".ui-accordion-header.ui-state-active ").css("background","gold") ;
+$(".ui-accordion-header.ui-state-default ").css("background","gold") ;
+});
+  });
+  setTimeout(function() {
+  window.location.href = "login.html";
+}, 6200);
+  </script>
+</head>
+
+<body bgcolor="#fcaf00">
+<br>
+<div align="center">
+<br>
+<br>
+<br>
+<img id="ttxlogo" src="http://www.ttx.com/Libraries/Main_Gallery/TTXLOGOr_4c_RSG.sflb.ashx" alt="TTX Logo" 
+</div>
+<br>
+<br>
+<br>
+<br> 
+<br>
+<br>
+<div id="progressbar"><div class="progress-label">Loading...</div></div>
+<script>
+$( "progress" ).click(function() {
+  $( "progressbar.progressbar" ).delay( 800 );
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ #status {
+    width: 300px;
+    height: 200px;
+    float: left;
+    background: green;
+}
+</style>
+    
+<script src="http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <meta charset="UTF-8">
+    <title></title>
+<script> 
+    
+function Car (id,name,type,status,length,unit_id){
+
+    this.id =id;
+    this.name= name;
+    this.type= type;
+    this.status=status;
+    this.unit_id =unit_id;
+    this.length = length;
+    
+var Car1 = new Car(1-99);
+var Car2 = new Car(2);
+var Car3 = new Car(3);
+var Car4 = new Car(4);
+    
+    Car.prototype = {
+    getId: function() {
+        return this.id; 
+        return this.name;
+        return this.type;
+        return this.status;
+        return this.unit_id;
+        return this.lentgh;
+    }
+      }
+    
+ function getcar(){
+jQuery.extend(Car,JSON.parse(fromServer));
+var results;
+    
+ }
+   return results;
+   results = new Car
+};   
+    
+    //seansCar = new car(789, 'Chevy', 'American', 'New', 25);//
+    
+    //seansCar.name;//
+</script>
+
+ <!-- from here down, I don't know what I'm doing -->  
+    
+<script> 
+
+// attempting to create the function 'status' which reads the status interger of the car object
+   // This so that images can be appened to certain cars// 
+    
+function status(fromServer){
+    this.status="status" 
+
+    if(status= "repair")
+     car.append("<imgsrc='Blue.car.PNG'/>");
+                else
+     car.append("<imgsrc='Black_car.PNG'/>");
+
+    if(status= "ready")
+     car.append("<imgsrc='Green_car.PNG'/>");
+              else
+    car.append("<imgsrc='Black_car.PNG'/>");
+    
+    if(status="out")
+    car.append("<imgsrc='Red_car.PNG'/>");
+    
+  };    
+
+</script>
+
+<script>
+    
+
+var fromServer = [
+
+ {
+    "id":      "D7YSH76", 
+    "number":  896737, 
+    "type":    "Rail",
+    "lentgh":  5,
+    "status":  "repair",
+    "unit_id":  "JXTL13",
+    }
+,
+    {
+    "id":      "S7YIU9", 
+    "number":  708300, 
+    "type":    "Box",
+    "lentgh":  3,
+    "status":  "ready",
+    "unit_id":  "GOU87U",
+        
+    }
+,
+ {
+    "id":      "DOG708", 
+    "number":"JP", 
+    "type":    "Box",
+    "lentgh":  3,
+    "status":  "paint",
+    "unit_id":  "GOU87U",
+    }
+,
+ {
+    "id":      "H1P0k", 
+    "number":  470284, 
+    "type":    "rail",
+    "lentgh":  4,
+    "status":  "repair",
+    "unit_id":  "Y0S1KO",
+    }
+    
+,
+    {
+      "id":    "JS09P",
+    "number":  738923,
+    "type":    "gondala",
+    "lentgh":    5,
+    "status":  "out",
+    "unit_id":    "BG1D17",
+    }
+    
+    
+];
+ 
+</script>
+
+</head>
+
+<body>
+</body>
+
+</html>
