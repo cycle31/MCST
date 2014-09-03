@@ -9,6 +9,7 @@
     .track {
       padding-top: 10px;
       padding-bottom: 10px;
+
     }
 
     .button {
@@ -22,7 +23,21 @@
     display: inline-block;
     }
 
+    .unit {
+    height:50px;
+    width:70px;
+    border-radius: 30%;
+    border-width: 2px;
+    
+    font-size: 15px;
+    background-color: #CDCDEE;
+    display: inline-block;
+    position: relative;
+    left: 100px;
+    }
+
   .trackbutton {
+    position: absolute;
     height:50px;
     width:100px;
     border-radius: 30%;
@@ -209,13 +224,13 @@ function track()
      console.log ('my id is: ' + this.track_id);
   };
   this.show = function () {
-    $('#yard').append('<div class="track" id="'+this.track_id+'""><button class="trackbutton">'+this.track_name+'</button></div>').trigger('create'); 
+    $('#yard').append('<div class="track" id="'+this.track_id+'"><button class="trackbutton">'+this.track_name+'</button></div>').trigger('create'); 
   };
 }
 
 function unit(){
   this.show = function (id) {
-    $('#'+id).append('<button class="button">'+this.unit_name+'</button>').trigger('create'); 
+    $('#'+id).append('<div class="unit" id="u'+this.unit_id+'"></div>').trigger('create'); 
   };
 }
 $(document).ready (function(){
