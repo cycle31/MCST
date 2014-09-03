@@ -1,4 +1,4 @@
-<!doctypehtml>
+<!DOCTYPEhtml>
 <html>
 <head>
   <title>TTX</title>
@@ -22,7 +22,40 @@
     background-color: #FFFFFF;
     display: inline-block;
     }
+/*
+    .carOneUnit {
+    height:50px;
+    width:70px;
+    border-radius: 30%;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    }
 
+    .carTwoUnits {
+    height:50px;
+    width:140px;
+    border-radius: 30%;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    }
+
+    .carFiveUnits {
+    height:50px;
+    width:350px;
+    border-radius: 30%;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 15px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    }
+*/
     .unit {
     height:50px;
     width:70px;
@@ -176,6 +209,7 @@ function mygame(){
   this.tracks = [];
   this.yards = [];
   this.unit = [];
+  this.cars = [];
 //an object method to say something
   this.sayhello = function (){
     console.log ('hello world');
@@ -196,9 +230,33 @@ function mygame(){
     var newunit = new unit();
     jQuery.extend(newunit, jsonUnit);
     this.unit.push(newunit);
-    newunit.show(trackid);    
+    newunit.show(trackid);  
+
   };
-  
+    this.addcar = function (jsonUnit, unitid){
+    var newcar = new car();
+    jQuery.extend(newcar, jsonUnit);
+    this.cars.push(newcar);
+    newcar.show(unitid); 
+    };
+/*  this.addcarOneUnit = function (jsonUnit, unitid){
+    var newcar = new carOneUnit();
+    jQuery.extend(newcar, jsonUnit);
+    this.cars.push(newcar);
+    newcar.show(unitid);    
+  };
+  this.addcarTwoUnits = function (jsonUnit, unitid){
+    var newcar = new carTwoUnits();
+    jQuery.extend(newcar, jsonUnit);
+    this.cars.push(newcar);
+    newcar.show(unitid);    
+  };
+  this.addcarFiveUnits = function (jsonUnit, unitid){
+    var newcar = new carFiveUnits();
+    jQuery.extend(newcar, jsonUnit);
+    this.cars.push(newcar);
+    newcar.show(unitid);    
+  };*/
 }
 
 function yard(){
@@ -224,7 +282,7 @@ function track()
      console.log ('my id is: ' + this.track_id);
   };
   this.show = function () {
-    $('#yard').append('<div class="track" id="'+this.track_id+'"><button class="trackbutton">'+this.track_name+'</button></div>').trigger('create'); 
+    $('#yard').append('<div class="track" id="t'+this.track_id+'"><button class="trackbutton">'+this.track_name+'</button></div>').trigger('create'); 
   };
 }
 
@@ -233,6 +291,32 @@ function unit(){
     $('#'+id).append('<div class="unit" id="u'+this.unit_id+'"></div>').trigger('create'); 
   };
 }
+
+function car(){
+  this.show = function (id) {
+    $('#'+id).append('<button class="button" id="c'+this.cars.car_id+'">'+this.cars.car_number+'</button>').trigger('create'); 
+  };
+}
+
+/*
+function carOneUnit(){
+  this.show = function (id) {
+    $('#'+id).append('<button class="carOneUnit" id="c'+this.car_id+'">'+this.car_number+'</button>').trigger('create'); 
+  };
+}
+
+function carTwoUnits(){
+  this.show = function (id) {
+    $('#'+id).append('<button class="carTwoUnits" id="c'+this.car_id+'">'+this.car_number+'</button>').trigger('create'); 
+  };
+}
+
+  function carFiveUnits(){
+  this.show = function (id) {
+    $('#'+id).append('<button class="carFiveUnits" id="c'+this.car_id+'">'+this.car_number+'</button>').trigger('create'); 
+  };
+}  
+*/
 $(document).ready (function(){
   
   var server = new ajaxServiceLayer();
@@ -245,7 +329,35 @@ $(document).ready (function(){
     thegame.addtrack(currentTrack);
     for (u=0;u<currentTrack.units.length;u++)
     {
-      thegame.addunit(currentTrack.units[u],currentTrack.track_id);
+      var trackid = "t"+currentTrack.track_id;
+      var currentUnit = currentTrack.units[u];
+      var unitid = "u"+currentUnit.unit_id;
+      thegame.addunit(currentTrack.units[u],trackid);
+      if (currentUnit.hasOwnProperty('cars')) {
+        thegame.addcar(currentUnit,unitid);
+      }
+      /*if (currentTrack.units[u].hasOwnProperty('cars')) {
+        for (c=0;c<thegame.cars.length;c++)
+        {
+          if (thegame.cars[c].car_id === currentUnit.cars.car_id) {
+          return;
+          }
+          else {
+            switch(currentUnit.cars.car_length) {
+              case "1":
+              thegame.addcarOneUnit(currentUnit,currentUnit.unit_id);
+              break;
+              case "2":
+              thegame.addcarTwoUnits(currentUnit,currentUnit.unit_id);
+              break;
+              case "5":
+              thegame.addcarFiveUnits(currentUnit,currentUnit.unit_id);
+              break;
+            }
+          }
+        }
+        
+      }*/
     }
   };
 });
