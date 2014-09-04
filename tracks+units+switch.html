@@ -288,6 +288,16 @@ function track()
   };
 }
 
+var found = false;
+function lookForCar (currentCarId) {
+  for (c=0;c<thegame.cars.length;c++) {
+    if (thegame.cars[c].car_id === currentCarId) {
+          found = true;
+          break;
+          }
+  }
+}
+
 function unit(){
   this.show = function (id) {
     $('#'+id).append('<div class="unit" id="u'+this.unit_id+'"></div>').trigger('create'); 
@@ -336,14 +346,9 @@ $(document).ready (function(){
       var unitid = "u"+currentUnit.unit_id;
       thegame.addunit(currentTrack.units[u],trackid);
       if (currentUnit.hasOwnProperty('cars')) {
-        /*thegame.addcar(currentUnit,unitid);*/
-        /*for (c=0;c<thegame.cars.length;c++)
-        {
-          if (thegame.cars[c].car_id === currentUnit.cars.car_id) {
-          return;
-          }
-          else {*/
-            switch(currentUnit.cars.car_length) {
+        lookForCar(currentUnit.cars.car_id);
+        if (found === false) {
+          switch(currentUnit.cars.car_length) {
               case "1":
               thegame.addcarOneUnit(currentUnit,unitid);
               break;
@@ -354,7 +359,16 @@ $(document).ready (function(){
               thegame.addcarFiveUnits(currentUnit,unitid);
               break;
             }
-          //}
+        }
+        /*thegame.addcar(currentUnit,unitid);*/
+        /*for (c=0;c<thegame.cars.length;c++)
+        {
+          if (thegame.cars[c].car_id === currentUnit.cars.car_id) {
+          return;
+          }*/
+        else {
+            found = false;
+        }
        // }
       }
       
