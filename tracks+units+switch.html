@@ -32,7 +32,8 @@
     border-style: solid;
     font-size: 15px;
     background-color: #FFFFFF;
-    display: inline-block;
+    display: inline;
+    position: inherit;
     }
 
     .carTwoUnits {
@@ -43,7 +44,9 @@
     border-style: solid;
     font-size: 15px;
     background-color: #FFFFFF;
-    display: inline-block;
+    display: inline;
+    z-index:2;
+    position: inherit;
     }
 
     .carFiveUnits {
@@ -54,8 +57,9 @@
     border-style: solid;
     font-size: 15px;
     background-color: #FFFFFF;
-    display: inline-block;
-    z-index: 2;
+    display: inline;
+    z-index:2;
+    position: inherit;
     }
 
     .unit {
@@ -63,14 +67,14 @@
     width:70px;
     border-radius: 30%;
     border-width: 2px;
-    z-index: 1;
     font-size: 15px;
     background-color: #CDCDEE;
     display: inline-block;
     position: relative;
+    /*z-index:1;*/
     /*left: 100px;*/
     }
-
+    
   .trackbutton {
     /*position: absolute;*/
     height:50px;
@@ -80,6 +84,7 @@
     border-style: solid;
     font-size: 15px;
     background-color: #FFFFFF;
+    display: inline;
     }
 
     .highlight {
