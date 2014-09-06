@@ -296,7 +296,7 @@ function track()
 var found = false;
 function lookForCar (currentCarId) {
   for (c=0;c<thegame.cars.length;c++) {
-    if (thegame.cars[c].car_id === currentCarId) {
+    if (thegame.cars[c].cars.car_id === currentCarId) {          
           found = true;
           break;
           }
